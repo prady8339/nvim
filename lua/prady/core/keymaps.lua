@@ -21,3 +21,29 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+function CompileAndRun()
+  local file = vim.fn.expand("%:p")
+  local file_name = vim.fn.expand("%:t:r")
+  local file_extension = vim.fn.expand("%:e")
+  local output_file = file_name .. ".out"
+  local command = ""
+  local show_output = "bat output.txt"
+
+  if file_extension == "cpp" then
+    command = "g++ -std=c++17 -o " .. output_file .. " " .. file .. " && ./" .. output_file
+  elseif file_extension == "java" then
+    command = "javac " .. file .. " && java " .. file_name
+  elseif file_extension == "py" then
+    command = "python3 " .. file
+  else
+    print("Unsupported file type")
+    return
+  end
+
+  vim.cmd("w")
+  vim.cmd("tabnew")
+  vim.cmd("term " .. command .. " && " .. show_output)
+end
+
+vim.api.nvim_set_keymap("n", "<leader>cr", ":lua CompileAndRun()<CR>", { noremap = true, silent = true })
