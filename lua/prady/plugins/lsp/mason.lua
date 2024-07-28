@@ -37,6 +37,7 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "clangd",
       },
     })
 
@@ -46,8 +47,10 @@ return {
         "stylua", -- lua formatter
         "isort", -- python formatter
         "black", -- python formatter
-        "pylint",
+        "flake8", -- python linter
+        "mypy", -- python type checker
         "eslint_d",
+        "clang-format",
       },
     })
   end,

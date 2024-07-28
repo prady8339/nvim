@@ -1,0 +1,26 @@
+{
+  "Vector Input": {
+    "prefix": "vin",
+    "body": [
+      "vector<int> ${1:arr}(${2:n});",
+      "for (auto &val : $1) {",
+      "  cin >> val;",
+      "}",
+      "$0"
+    ],
+    "description": "Input a 1D vector"
+  },
+  "Grid Input": {
+    "prefix": "gin",
+    "body": [
+      "vector<vector<int>> ${1:grid}(${2:m}, vector<int>(${3:n}));",
+      "for (auto &$2 : $1) {",
+      "  for (auto &val : $2) {",
+      "    cin >> val;",
+      "  }",
+      "}",
+      "$0"
+    ],
+    "description": "Input a 2D vector"
+  }
+}

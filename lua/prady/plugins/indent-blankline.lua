@@ -5,7 +5,7 @@ return {
   opts = {
     indent = {
       highlight = "IndentBlanklineChar",
-      char = "┊",
+      -- char = "┊",
     },
   },
 }

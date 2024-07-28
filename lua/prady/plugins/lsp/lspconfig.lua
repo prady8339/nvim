@@ -131,7 +131,34 @@ return {
           },
         })
       end,
+      ["pyright"] = function()
+        -- configure pyright language server
+        lspconfig["pyright"].setup({
+          -- capabilities = capabilities,
+          capabilities = (function()
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+            return capabilities
+          end)(),
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+        })
+      end,
+      ["clangd"] = function()
+        -- configure clangd language server
+        lspconfig["clangd"].setup({
+          on_attach = function(client, bufnr)
+            client.server_capabilities.signatureHelpProvider = false
+          end,
+          capabilities = capabilities,
+        })
+      end,
     })
   end,
 }
-
