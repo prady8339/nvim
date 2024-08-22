@@ -1,6 +1,6 @@
 {
   "Codeforces Template C++20": {
-    "prefix": "cf",
+    "prefix": "cpmain",
     "body": [
       "#include <bits/stdc++.h>",
       "#define int long long",
