@@ -2,9 +2,9 @@
   "Vector Input": {
     "prefix": "vin",
     "body": [
-      "vector<int> ${1:arr}(${2:n});",
+      "std::vector<int> ${1:arr}(${2:n});",
       "for (auto &val : $1) {",
-      "  cin >> val;",
+      "  std::cin >> val;",
       "}",
       "$0"
     ],
@@ -13,10 +13,10 @@
   "Grid Input": {
     "prefix": "gin",
     "body": [
-      "vector<vector<int>> ${1:grid}(${2:m}, vector<int>(${3:n}));",
+      "std::vector<std::vector<int>> ${1:grid}(${2:m}, std::vector<int>(${3:n}));",
       "for (auto &$2 : $1) {",
       "  for (auto &val : $2) {",
-      "    cin >> val;",
+      "    std::cin >> val;",
       "  }",
       "}",
       "$0"

@@ -1,6 +1,6 @@
 {
   "Struct Node": {
-    "prefix": "struct",
+    "prefix": "struct node",
     "body": [
       "struct Node {",
       "\t${1:int} ${2:x};",
@@ -12,24 +12,17 @@
     ],
     "description": "Create a node struct"
   },
-  "Custom Heap": {
-    "prefix": "custompq",
+  "Node Comparator": {
+    "prefix": "node cmp",
     "body": [
-      "bool ${1:comp}(const Node &${2:x}, const Node &${3:y}) { return ${2:x}.val > ${3:y}.val; }",
-      "priority_queue<Node, vector<Node>, decltype(&${1:comp})> ${4:pq}(&${1:comp});",
+      "struct NodeCmp {",
+      "  bool operator()(const Node &a, const Node &b) {",
+      "    return a.${1:z} > b.${1:z};",
+      "  }",
+      "};",
       "$0"
     ],
     "description": "Create a custom heap for complex data types"
-  },
-  "Min Heap": {
-    "prefix": "minpq",
-    "body": ["priority_queue<int> ${1:pq};", "$0"],
-    "description": "Create a min heap for integers"
-  },
-  "Max Heap": {
-    "prefix": "maxpq",
-    "body": ["priority_queue<int, vector<int>, greater<int>> ${1:pq};", "$0"],
-    "description": "Create a max heap for integers"
   },
   "DSU - Disjoint Set Union": {
     "prefix": "DSU",
@@ -37,9 +30,9 @@
       "class DSU {",
       "private:",
       "  int groupCount;",
-      "  vector<int> parent;",
-      "  vector<int> rank;",
-      "  vector<int> groupSizes;",
+      "  std::vector<int> parent;",
+      "  std::vector<int> rank;",
+      "  std::vector<int> groupSizes;",
       "",
       "public:",
       "  DSU(int n) {",
@@ -84,8 +77,8 @@
       "    return groupSizes[root];",
       "  }",
       "",
-      "  vector<int> groupElements(int x) {",
-      "    vector<int> elements;",
+      "  std::vector<int> groupElements(int x) {",
+      "    std::vector<int> elements;",
       "    int root = find(x);",
       "    for (int i = 0; i < parent.size(); ++i) {",
       "      if (find(i) == root) {",

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "My custom snippets",
   "main": "index.js",
-  "author": "Ansh Ujlayan",
+  "author": "Pradyumna Singh",
   "license": "ISC",
   "contributes": {
     "snippets": [

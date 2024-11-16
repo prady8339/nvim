@@ -1,5 +1,5 @@
-import json
 import os
+import json
 
 snippet_home = os.path.expanduser("~/.config/nvim/my-snippets")
 snippet_lang = ["cpp", "python"]
